@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects | Pitso Nkotolane</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Project Status Badges */
+        .project-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .status-completed {
+            background-color: rgba(46, 196, 182, 0.2);
+            color: #2ec4b6;
+            border: 1px solid rgba(46, 196, 182, 0.3);
+        }
+        
+        .status-in-progress {
+            background-color: rgba(255, 158, 0, 0.2);
+            color: #ff9e00;
+            border: 1px solid rgba(255, 158, 0, 0.3);
+        }
+        
+        .status-hackathon {
+            background-color: rgba(247, 37, 133, 0.2);
+            color: #f72585;
+            border: 1px solid rgba(247, 37, 133, 0.3);
+        }
+        
+        .project-features {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .project-features li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .project-features li::before {
+            content: "▸";
+            color: var(--primary);
+            position: absolute;
+            left: -15px;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .project-links .btn {
+            font-size: 0.9rem;
+            padding: 8px 16px;
+        }
+        
+        .project-highlight {
+            border: 2px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(247, 37, 133, 0.2);
+            transform: scale(1.02);
+            position: relative;
+        }
+        
+        .project-highlight::before {
+            content: "⭐ Featured";
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-laptop"></i>PitsoDev
+            </a>
+            <div class="navbar-links">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="AboutUs.html">About</a>
+                <a class="nav-link active" href="project.html">Projects</a>
+                <a class="nav-link" href="ContactUs.html">Contact</a>
+                <div class="theme-toggle" id="themeToggle">
+                    <div class="toggle-thumb"></div>
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="projects-hero">
+        <div class="container">
+            <h1 class="hero-title">My Projects</h1>
+            <p class="hero-subtitle">Full-stack applications, mobile solutions, and innovative software development</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section">
+        <div class="container">
+            <div class="projects-grid">
+                <!-- GIGConnectSkill SA – FNB App of the Year Hackathon -->
+                <div class="project-card project-highlight">
+                    <div class="project-img" style="background: linear-gradient(45deg, #3a0ca3, #4cc9f0);">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-status status-hackathon">FNB Hackathon</span>
+                        <h3>GIGConnectSkill SA</h3>
+                        <p>A mobile-first marketplace connecting informal workers with clients, developed during the FNB App of the Year Hackathon.</p>
+                        
+                        <ul class="project-features">
+                            <li>Secure Firebase Authentication and real-time database</li>
+                            <li>Geolocation integration with photo-proof job submissions</li>
+                            <li>Real-time job and payment workflows using Firestore</li>
+                            <li>Built with React Native (Expo) and React Native Paper</li>
+                            <li>Fully functional prototype delivered in 48 hours</li>
+                        </ul>
+                        
+                        <div class="tech-tags">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Expo</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Firestore</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/Pitso4859/GIGConnectSASkill.git" class="btn btn-outline" target="_blank">
+                                <i class="fab fa-github me-2"></i>View Code
+                            </a>
+                            <a href="#" class="btn btn-ghost">
+                                <i class="fas fa-external-link-alt me-2"></i>Case Study
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI-Powered Credit Card Fraud Detection -->
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(45deg, #f72585, #ff9e00);">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-status status-completed">Machine Learning</span>
+                        <h3>AI-Powered Credit Card Fraud Detection</h3>
+                        <p>Engineered a machine learning pipeline to detect real-time fraudulent transactions, reducing false positives by 35%.</p>
+                        
+                        <ul class="project-features">
+                            <li>Implemented feature engineering and SMOTE to handle class imbalance</li>
+                            <li>Evaluated and optimized Logistic Regression and Random Forest models</li>
+                            <li>Visualized results with matplotlib for comprehensive analysis</li>
+                            <li>Reduced false positive rate by 35% through model optimization</li>
+                        </ul>
+                        
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">scikit-learn</span>
+                            <span class="tech-tag">pandas</span>
+                            <span class="tech-tag">imbalanced-learn</span>
+                            <span class="tech-tag">matplotlib</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/BA-3-2-Mavuti/Credit-Card-Fraud-Detection.git" class="btn btn-outline" target="_blank">
+                                <i class="fab fa-github me-2"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Portfolio Website -->
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(45deg, #4361ee, #4cc9f0);">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-status status-completed">Full-Stack</span>
+                        <h3>Personal Portfolio Website</h3>
+                        <p>Responsive portfolio website built and deployed to showcase projects with dynamic MySQL-connected contact form.</p>
+                        
+                        <ul class="project-features">
+                            <li>Built with Spring Boot and Thymeleaf templating engine</li>
+                            <li>Integrated MySQL database for real-time contact form submissions</li>
+                            <li>Responsive design with modern CSS animations and transitions</li>
+                            <li>Dark/light theme toggle functionality</li>
+                            <li>Professional presentation of skills, projects, and certifications</li>
+                        </ul>
+                        
+                        <div class="tech-tags">
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">Thymeleaf</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/Pitso4859/Nkotolane_Pitso_Portfolio.git" class="btn btn-outline" target="_blank">
+                                <i class="fab fa-github me-2"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VUT Eats – Campus Food Ordering System -->
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(45deg, #7209b7, #f72585);">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-status status-completed">Web Application</span>
+                        <h3>VUT Eats – Campus Food Ordering System</h3>
+                        <p>A modern web-based food ordering platform built for the Vaal University of Technology community.</p>
+                        
+                        <ul class="project-features">
+                            <li>Browse categorized menus and place online orders</li>
+                            <li>Real-time order tracking and campus location pickup</li>
+                            <li>Built with PHP, MySQL, Bootstrap, and JavaScript</li>
+                            <li>Responsive design optimized for mobile devices</li>
+                            <li>Secure user authentication and order management</li>
+                        </ul>
+                        
+                        <div class="tech-tags">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML5/CSS3</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/Pitso4859/VUT-Eats.git" class="btn btn-outline" target="_blank">
+                                <i class="fab fa-github me-2"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Celse Academy Management System -->
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(45deg, #2ec4b6, #06d6a0);">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-status status-completed">Enterprise Application</span>
+                        <h3>Celse Academy Management System</h3>
+                        <p>Comprehensive educational management system handling student records, course management, and administrative functions.</p>
+                        
+                        <ul class="project-features">
+                            <li>Student enrollment and record management</li>
+                            <li>Course scheduling and grade tracking</li>
+                            <li>Administrative dashboard with reporting features</li>
+                            <li>Secure user roles and permissions system</li>
+                        </ul>
+                        
+                        <div class="tech-tags">
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Thymeleaf</span>
+                            <span class="tech-tag">Hibernate</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/Pitso4859/CelseAcademyManagementSystem.git" class="btn btn-outline" target="_blank">
+                                <i class="fab fa-github me-2"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clinic Management System -->
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(45deg, #ef476f, #ffd166);">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-status status-in-progress">In Development</span>
+                        <h3>Clinic Management System</h3>
+                        <p>Healthcare management system for clinics to handle patient records, appointments, and medical staff coordination.</p>
+                        
+                        <ul class="project-features">
+                            <li>Patient registration and medical history tracking</li>
+                            <li>Appointment scheduling and management system</li>
+                            <li>Staff and inventory management modules</li>
+                            <li>Secure data handling with role-based access</li>
+                        </ul>
+                        
+                        <div class="tech-tags">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Web Development</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/Pitso4859/clinic-management.git" class="btn btn-outline" target="_blank">
+                                <i class="fab fa-github me-2"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tic Tac Toe Game -->
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(45deg, #ff9e00, #ffbf69);">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-status status-completed">Desktop Application</span>
+                        <h3>Tic Tac Toe Game</h3>
+                        <p>Classic Tic Tac Toe game implementation with interactive UI, game logic, and win condition detection.</p>
+                        
+                        <ul class="project-features">
+                            <li>Interactive GUI built with JavaFX</li>
+                            <li>Win condition detection and game state management</li>
+                            <li>Score tracking and game reset functionality</li>
+                            <li>Clean and intuitive user interface</li>
+                        </ul>
+                        
+                        <div class="tech-tags">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">JavaFX</span>
+                            <span class="tech-tag">Game Development</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/Pitso4859/tic-toc-tac-game.git" class="btn btn-outline" target="_blank">
+                                <i class="fab fa-github me-2"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Personal Portfolio Website -->
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(45deg, #4361ee, #4cc9f0);">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-status status-completed">Full-Stack</span>
+                        <h3>My Personal Portfolio Website</h3>
+                        <p>Responsive portfolio website built and deployed to showcase projects with dynamic MySQL-connected contact form.</p>
+                        
+                        <ul class="project-features">
+                            <li>Built with HTML,CSS and JavaScript</li>
+                            <li>Integrated MySQL database for real-time contact form submissions</li>
+                            <li>Responsive design with modern CSS animations and transitions</li>
+                            <li>Dark/light theme toggle functionality</li>
+                            <li>Professional presentation of skills, projects, and certifications</li>
+                        </ul>
+                        
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/Pitso4859/My-Personal-Portfolio.git" class="btn btn-outline" target="_blank">
+                                <i class="fab fa-github me-2"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator Application -->
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(45deg, #560bad, #b5179e);">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-status status-completed">Desktop Application</span>
+                        <h3>Calculator Application</h3>
+                        <p>Functional calculator application with basic arithmetic operations and user-friendly interface.</p>
+                        
+                        <ul class="project-features">
+                            <li>Basic arithmetic operations (add, subtract, multiply, divide)</li>
+                            <li>Clear and intuitive JavaFX user interface</li>
+                            <li>Error handling for mathematical operations</li>
+                            <li>Responsive button design and layout</li>
+                        </ul>
+                        
+                        <div class="tech-tags">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">JavaFX</span>
+                            <span class="tech-tag">GUI</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/Pitso4859/Calculator.git" class="btn btn-outline" target="_blank">
+                                <i class="fab fa-github me-2"></i>View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Highlight Section -->
+    <section class="skills-preview" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technologies I Use</h2>
+                <p>My toolkit for building amazing applications</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-preview">
+                    <i class="fab fa-java"></i>
+                    <h3>Java & Spring Boot</h3>
+                    <p>Backend development with Spring Framework, Hibernate, and enterprise applications</p>
+                </div>
+                <div class="skill-preview">
+                    <i class="fas fa-database"></i>
+                    <h3>Database Management</h3>
+                    <p>MySQL, PostgreSQL, Firebase Firestore, and database design principles</p>
+                </div>
+                <div class="skill-preview">
+                    <i class="fas fa-code"></i>
+                    <h3>Web Technologies</h3>
+                    <p>HTML5, CSS3, JavaScript, Thymeleaf, and responsive design</p>
+                </div>
+                <div class="skill-preview">
+                    <i class="fab fa-react"></i>
+                    <h3>Mobile Development</h3>
+                    <p>React Native, Expo, and cross-platform mobile application development</p>
+                </div>
+                <div class="skill-preview">
+                    <i class="fab fa-python"></i>
+                    <h3>Python & Data Science</h3>
+                    <p>Machine learning, data analysis with pandas, scikit-learn, and matplotlib</p>
+                </div>
+                <div class="skill-preview">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud & DevOps</h3>
+                    <p>Firebase, Microsoft Azure, Oracle Cloud, and CI/CD practices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="section" style="text-align: center; padding: 60px 0;">
+        <div class="container">
+            <h2>Interested in Working Together?</h2>
+            <p style="max-width: 600px; margin: 20px auto;">I'm always open to discussing new opportunities, collaborations, or innovative projects. Let's connect and build something amazing together!</p>
+            <div class="hero-buttons" style="justify-content: center; margin-top: 30px;">
+                <a href="ContactUs.html" class="btn btn-primary">
+                    <i class="fas fa-envelope me-2"></i>Get In Touch
+                </a>
+                <a href="Files/NKOTOLANE PITSO GINTOS RESUME.pdf" class="btn btn-outline" download="Nkotolane_Pitso_Resume.pdf">
+                    <i class="fas fa-download me-2"></i>Download CV
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Pitso Nkotolane Gintos</h3>
+                    <p>Aspiring Full-Stack Developer crafting innovative digital solutions</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect with me</h3>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/pitso-nkotolane" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/Pitso4859" target="_blank" class="social-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://wa.me/+27638654343" target="_blank" class="social-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:pnkotolane@gmail.com" class="social-icon">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pitso Nkotolane Gintos. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.classList.add(savedTheme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            // Save the current theme to localStorage
+            const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : '';
+            localStorage.setItem('theme', currentTheme);
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navbarLinks = document.querySelector('.navbar-links');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navbarLinks.classList.toggle('active');
+            });
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navbarLinks.classList.remove('active');
+            });
+        });
+
+        // Add scroll animations to elements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize theme
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
+                body.classList.add('dark-mode');
+            }
+
+            // Add scroll animations to project cards
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.project-card, .skill-preview');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.animationPlayState = 'running';
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                elements.forEach(el => {
+                    observer.observe(el);
+                });
+            };
+            
+            animateOnScroll();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
