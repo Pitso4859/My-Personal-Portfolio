@@ -1,3 +1,4 @@
+// script.js - Complete updated file with Chatbot
 // Theme Toggle Functionality
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
@@ -71,118 +72,6 @@ if (contactForm) {
     });
 }
 
-// Initialize animations when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize theme
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
-        body.classList.add('dark-mode');
-    }
-
-    // Animate skill bars if on about page
-    if (document.querySelector('.skill-progress')) {
-        animateSkillBars();
-    }
-
-    // Add scroll animations to elements
-    const animateOnScroll = () => {
-        const elements = document.querySelectorAll('.skill-preview, .skill-category, .timeline-item, .project-card, .contact-form-container');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        elements.forEach(el => {
-            observer.observe(el);
-        });
-    };
-    
-    animateOnScroll();
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-// Carousel Functionality
-function initCarousel() {
-    const carousel = document.querySelector('.carousel');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    const indicatorsContainer = document.querySelector('.carousel-indicators');
-    const certificateItems = document.querySelectorAll('.certificate-item');
-    
-    let currentIndex = 0;
-    const totalItems = certificateItems.length;
-    const rotationAngle = 360 / totalItems;
-    
-    // Create indicators
-    certificateItems.forEach((_, index) => {
-        const indicator = document.createElement('div');
-        indicator.className = 'carousel-indicator';
-        if (index === 0) indicator.classList.add('active');
-        indicator.addEventListener('click', () => {
-            currentIndex = index;
-            updateCarousel();
-        });
-        indicatorsContainer.appendChild(indicator);
-    });
-    
-    // Previous button
-    prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-        updateCarousel();
-    });
-    
-    // Next button
-    nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % totalItems;
-        updateCarousel();
-    });
-    
-    // Update carousel position
-    function updateCarousel() {
-        const rotation = -currentIndex * rotationAngle;
-        carousel.style.transform = `rotateY(${rotation}deg)`;
-        
-        // Update active indicator
-        document.querySelectorAll('.carousel-indicator').forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === currentIndex);
-        });
-    }
-    
-    // Pause animation on hover
-    carousel.addEventListener('mouseenter', () => {
-        carousel.style.animationPlayState = 'paused';
-    });
-    
-    carousel.addEventListener('mouseleave', () => {
-        carousel.style.animationPlayState = 'running';
-    });
-}
-
-// Initialize carousel when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // ... existing code ...
-    
-    // Initialize carousel if it exists
-    if (document.querySelector('.carousel')) {
-        initCarousel();
-    }
-});
 // Chatbot Functionality
 function initChatbot() {
     const chatbotToggle = document.getElementById('chatbotToggle');
@@ -313,10 +202,152 @@ function initChatbot() {
     }
 }
 
-// Initialize chatbot when page loads
-document.addEventListener('DOMContentLoaded', () => {
-    // ... existing code ...
+// Carousel Functionality (for About page)
+function initCarousel() {
+    const carousel = document.querySelector('.carousel');
+    if (!carousel) return;
     
-    // Initialize chatbot
+    let animationSpeed = 40;
+    
+    document.getElementById('slowDownBtn')?.addEventListener('click', function() {
+        animationSpeed += 10;
+        carousel.style.animationDuration = animationSpeed + 's';
+    });
+    
+    document.getElementById('speedUpBtn')?.addEventListener('click', function() {
+        animationSpeed = Math.max(10, animationSpeed - 10);
+        carousel.style.animationDuration = animationSpeed + 's';
+    });
+    
+    // Pause on hover
+    carousel.addEventListener('mouseenter', () => {
+        carousel.style.animationPlayState = 'paused';
+    });
+    
+    carousel.addEventListener('mouseleave', () => {
+        carousel.style.animationPlayState = 'running';
+    });
+}
+
+// Formspree Form Handling (for Contact page)
+function initFormspreeForm() {
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+    const submitBtn = document.getElementById('submitBtn');
+
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Simple form validation
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        
+        if (name && email && subject && message) {
+            // Show loading state
+            submitBtn.classList.add('btn-loading');
+            submitBtn.disabled = true;
+            
+            try {
+                // Send form data to Formspree
+                const response = await fetch('https://formspree.io/f/xbjnqgzj', {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    formMessage.style.display = 'flex';
+                    formMessage.className = 'form-message success';
+                    formMessage.innerHTML = '<i class="fas fa-check-circle"></i><p>Thank you for your message! I will get back to you soon.</p>';
+                    
+                    // Reset form
+                    contactForm.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                // Show error message
+                formMessage.style.display = 'flex';
+                formMessage.className = 'form-message error';
+                formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i><p>Sorry, there was an error sending your message. Please try again or email me directly at pnkotolane@gmail.com.</p>';
+            } finally {
+                // Reset button state
+                submitBtn.classList.remove('btn-loading');
+                submitBtn.disabled = false;
+                
+                // Hide message after 8 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 8000);
+            }
+        } else {
+            // Show error message
+            formMessage.style.display = 'flex';
+            formMessage.className = 'form-message error';
+            formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i><p>Please fill in all required fields.</p>';
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        }
+    });
+}
+
+// Add scroll animations to elements
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.skill-preview, .skill-category, .timeline-item, .project-card, .contact-form-container');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    elements.forEach(el => {
+        observer.observe(el);
+    });
+}
+
+
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
+        body.classList.add('dark-mode');
+    }
+
+
+    if (document.querySelector('.skill-progress')) {
+        animateSkillBars();
+    }
+    animateOnScroll();
+    initSmoothScroll();
     initChatbot();
+    initCarousel();
+    initFormspreeForm();
 });
